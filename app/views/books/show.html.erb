@@ -1,0 +1,47 @@
+<%= link_to "← Retour", root_path, class:"text-decoration-none text-dark ms-5 mt-2 mb-2 " %>
+
+<div class='container mb-5'>
+
+  <%# Titre et prix %>
+  <div class="accroche">
+    <h3><%= @book.title %></h3>
+    <h4><%= @book.price_per_day %> € par jour</h4>
+  </div>
+
+  <%# card show %>
+  <div class="card-show">
+    <%# photo %>
+    <div class="img-show">
+      <%if @book.photo.attached? %>
+        <%= cl_image_tag @book.photo.key, crop: :fill , height: 400 %>
+      <% end %>
+    </div>
+    <%# contenu textuel %>
+    <div class="text-show">
+      <h5>Description</h5>
+      <br>
+      <%=@book.description%>
+      <%# réservation date %>
+      <% if @book.user != current_user %>
+        <div class="mt-5">
+          <%= simple_form_for [@book, @booking] do |f|%>
+            <div class="booking-dates">
+              <%= f.input :starting_date, as: :date, html5: true, label: 'De' %>
+              <%= f.input :ending_date, as: :date, html5: true, label: 'à' %>
+            </div>
+            <%= f.submit 'Réserver', class: "btn btn-primary"%>
+          <% end %>
+        <%else%>
+          <div class="d-flex">
+            <%= link_to 'Retour à mon espace',  dashboard_path, class: "btn btn-primary button" %>
+            <%= link_to 'Créer une autre annonce',  new_book_path, class: "btn btn-primary button" %>
+          </div>
+        </div>
+      <%end%>
+    </div>
+
+  </div>
+
+
+
+</div>

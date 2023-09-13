@@ -1,0 +1,38 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand d-flex" do %>  <%# changement root_path %>
+      <%= image_tag "https://res.cloudinary.com/dlumucj7m/image/upload/v1671362946/logo_padyfu.jpg" %> <%# changement logo %>
+      <%# ajout du titre %>
+      <h3 class="title-brand">Book a Book</h3>
+    <% end %>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Louez votre livre", new_book_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Mon espace", dashboard_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item dropdown">
+            <%= image_tag "https://res.cloudinary.com/dlumucj7m/image/upload/v1671363030/photo_CV_fwwhqk.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          </li>
+          <li>
+            <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link"%>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
