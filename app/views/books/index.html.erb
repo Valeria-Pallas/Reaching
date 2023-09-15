@@ -23,9 +23,10 @@
       <% if book.user != current_user %>
         <div class="card-product">
           <div class="photo-book">
-            <%if book.photo.attached? %>
-              <%= cl_image_tag book.photo.key %>
-            <% end %>
+            <%#if book.photo.attached? %>
+
+              <%#= cl_image_tag book.photo.key %>
+            <%# end %>
           </div>
           <div class="card-product-infos">
             <h2><strong><%= book.title %></strong></h2>

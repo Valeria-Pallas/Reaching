@@ -13,9 +13,9 @@
         <% @bookings.each do |booking| %>
           <div class="card-product">
             <div class="photo-book">
-              <%if booking.book.photo.attached? %>
-                <%= cl_image_tag booking.book.photo.key %>
-              <% end %>
+              <%#if booking.book.photo.attached? %>
+                <%#= cl_image_tag booking.book.photo.key %>
+              <%# end %>
             </div>
             <div class="card-product-infos">
               <h2><strong><%= booking.book.title %></strong></h2>
